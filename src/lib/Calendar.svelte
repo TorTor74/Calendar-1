@@ -1,9 +1,13 @@
 <script>
-  let count = 0;
+import { formatDistance, subDays,format } from 'date-fns'
+
+formatDistance(subDays(new Date(), 3), new Date(), { addSuffix: true })
+const today=new Date()
+console.log(today)
 </script>
 
 <div class="container">
-  <header>сентябрь</header>
+  <header>{format(today, 'MMMM yyyy	') } г.</header>
   <div class="days">
     <div class="day">Пн</div>
     <div class="day">Вт</div>
@@ -40,7 +44,6 @@
     }
     .grid-calendar{
   
-  sss
     }
   }
 </style>

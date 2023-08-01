@@ -46,6 +46,7 @@
       <div
         class="item"
         class:notNow={format(day, "MMM") != format(today, "MMM")}
+        class:today={format(day, 'MM dd yyyy')==format(today, 'MM dd yyyy')}
       >
         {#if format(day, "dd") == "01"}
           {format(day, "dd")}<span class="month">{format(day, "MMM")}.</span>
@@ -64,18 +65,15 @@
       format("woff");
   }
   .container {
-    width: 100%;
-    height: 100%;
-    // display: flex;
-    // justify-content: flex-start;
-    // align-items: baseline;
-    // flex-direction: column;
-    // display: grid;
-    //  grid-template-columns: repeat(7,1fr);
-    //  grid-template-rows: 50px 150px repeat(6,1fr);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    flex-direction: column;
 
     header {
-      height: 40px;
+      // height: 40px;
       flex-shrink: 0;
       color: #272727;
       font-family: Helvetica;
@@ -85,6 +83,9 @@
       text-transform: lowercase;
       text-align: start;
       padding: 9px 14px;
+      width: auto;
+      height: auto;
+
       //   grid-column-start: 1;
       // grid-column-end: 8;
     }
@@ -97,13 +98,13 @@
       background: #000;
       grid-gap: 1px;
       border: 1px solid #000;
-      // width: 100%;
-      // height: 100%;
+      width: 100%;
+      height: 100%;
       .item {
         background: #fff;
         padding: 6px 11px;
-        width: 114px;
-        height: 101px;
+        width: -webkit-fill-available;
+        height: -webkit-fill-available;
         color: #272727;
         text-align: right;
         font-family: Helvetica;
@@ -113,6 +114,15 @@
         line-height: normal;
         &.notNow {
           color: #bdbdbd;
+          text-align: right;
+          font-family: Helvetica;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+        &.today{
+          color: #ff0000;
           text-align: right;
           font-family: Helvetica;
           font-size: 16px;
@@ -143,8 +153,8 @@
       grid-template-rows: 1fr;
       justify-items: end;
       align-items: end;
-      height: 34px;
-
+      width: 100%;
+      height: auto;
       color: #272727;
       font-family: Helvetica;
       font-size: 16px;

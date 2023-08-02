@@ -15,7 +15,7 @@
   let startMonth = getDay(startOfMonth(today));
   let before =
     startMonth == 0 ? startOfMonth(today) : subDays(today, startMonth);
-  let endDays = 7 - getDay(endOfMonth(today));
+  let endDays = 14 - getDay(endOfMonth(today));
 
   let last =
     endDays == 0 ? endOfMonth(today) : addDays(lastDayOfMonth(today), endDays);
@@ -49,9 +49,9 @@
         class:today={format(day, 'MM dd yyyy')==format(today, 'MM dd yyyy')}
       >
         {#if format(day, "dd") == "01"}
-          {format(day, "dd")}<span class="month">{format(day, "MMM")}.</span>
+          {format(day, "d")}<span class="month">{format(day, "MMM")}.</span>
         {:else}
-          {format(day, "dd")}
+          {format(day, "d")}
         {/if}
       </div>
     {/each}
@@ -92,12 +92,12 @@
     .grid-calendar {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      grid-template-rows: repeat(5, 1fr);
+      grid-template-rows: repeat(6, 1fr);
       justify-content: flex-end;
       align-items: flex-start;
-      background: #000;
+      background: #BDBDBD;
       grid-gap: 1px;
-      border: 1px solid #000;
+      border: 1px solid #bdbdbd;
       width: 100%;
       height: 100%;
       .item {

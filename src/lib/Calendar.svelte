@@ -1,30 +1,24 @@
 <script>
-  import { formatDistance, subDays, format } from "date-fns";
-  import getDaysInMonth from "date-fns/getDaysInMonth";
+  import { formatDistance, subDays, format, isToday } from "date-fns";
   import eachDayOfInterval from "date-fns/eachDayOfInterval";
   import startOfMonth from "date-fns/startOfMonth";
-  import endOfMonth from "date-fns/endOfMonth";
-  import getDay from "date-fns/getDay";
-  import subMonths from "date-fns/subMonths";
-  import addMonths from "date-fns/addMonths";
-  import addDays from "date-fns/addDays";
   import lastDayOfMonth from "date-fns/lastDayOfMonth";
+  import isWeekend from 'date-fns/isWeekend'
+  import isFirstDayOfMonth from 'date-fns/isFirstDayOfMonth'
+  import startOfWeek from 'date-fns/startOfWeek'
+  import endOfWeek from 'date-fns/endOfWeek'
 
   formatDistance(subDays(new Date(), 3), new Date(), { addSuffix: true });
   const today = new Date();
-  let startMonth = getDay(startOfMonth(today));
-  let before =
-    startMonth == 0 ? startOfMonth(today) : subDays(today, startMonth);
-  let endDays = 14 - getDay(endOfMonth(today));
+  let before =startOfWeek(startOfMonth(today));
 
-  let last =
-    endDays == 0 ? endOfMonth(today) : addDays(lastDayOfMonth(today), endDays);
+  let last = endOfWeek(lastDayOfMonth(today));
   const days = eachDayOfInterval({
     start: before,
     end: last,
   });
 
-  console.log(days);
+  console.log(startOfWeek(startOfMonth(today)));
 </script>
 
 <div class="container">
@@ -46,9 +40,10 @@
       <div
         class="item"
         class:notNow={format(day, "MMM") != format(today, "MMM")}
-        class:today={format(day, 'MM dd yyyy')==format(today, 'MM dd yyyy')}
+        class:today={isToday(day)}
+        class:weekend={isWeekend(day)}
       >
-        {#if format(day, "dd") == "01"}
+        {#if isFirstDayOfMonth(day)}
           {format(day, "d")}<span class="month">{format(day, "MMM")}.</span>
         {:else}
           {format(day, "d")}
@@ -135,8 +130,7 @@
           text-transform: lowercase;
         }
       }
-      .item:nth-child(7n + 6),
-      .item:nth-child(7n + 7) {
+      .weekend{
         background: #ccc;
         color: #7b7b7b;
         text-align: right;

@@ -3,27 +3,32 @@
   import eachDayOfInterval from "date-fns/eachDayOfInterval";
   import startOfMonth from "date-fns/startOfMonth";
   import lastDayOfMonth from "date-fns/lastDayOfMonth";
-  import isWeekend from 'date-fns/isWeekend'
-  import isFirstDayOfMonth from 'date-fns/isFirstDayOfMonth'
-  import startOfWeek from 'date-fns/startOfWeek'
-  import endOfWeek from 'date-fns/endOfWeek'
+  import isWeekend from "date-fns/isWeekend";
+  import isFirstDayOfMonth from "date-fns/isFirstDayOfMonth";
+  import startOfWeek from "date-fns/startOfWeek";
+  import endOfWeek from "date-fns/endOfWeek";
+  import { ru } from "date-fns/locale";
+  import setDefaultOptions from "date-fns/setDefaultOptions";
+  import addDays from "date-fns/addDays";
+  import isThisMonth from 'date-fns/isThisMonth'
 
-  formatDistance(subDays(new Date(), 3), new Date(), { addSuffix: true });
+  setDefaultOptions({ locale: ru, weekStartsOn: 1 });
+  //эьбгчжв умкичр
+
   const today = new Date();
-  let before =startOfWeek(startOfMonth(today));
+  let before = startOfWeek(startOfMonth(today));
 
-  let last = endOfWeek(lastDayOfMonth(today));
+  let last = addDays(endOfWeek(lastDayOfMonth(today)), 7);
   const days = eachDayOfInterval({
     start: before,
     end: last,
   });
 
-  console.log(startOfWeek(startOfMonth(today)));
 </script>
 
 <div class="container">
   <header>
-    <b>{format(today, "MMMM")}</b>
+    <b>{format(today, "LLLL")}</b>
     {format(today, "yyyy")}<b>г.</b>
   </header>
   <div class="days">
@@ -39,15 +44,13 @@
     {#each days as day}
       <div
         class="item"
-        class:notNow={format(day, "MMM") != format(today, "MMM")}
+        class:notNow={!isThisMonth(day) &&!isWeekend(day)}
         class:today={isToday(day)}
         class:weekend={isWeekend(day)}
       >
-        {#if isFirstDayOfMonth(day)}
-          {format(day, "d")}<span class="month">{format(day, "MMM")}.</span>
-        {:else}
-          {format(day, "d")}
-        {/if}
+        {isFirstDayOfMonth(day)
+          ? format(day, "d") + ` ` + format(day, "MMM")
+          : format(day, "d")}
       </div>
     {/each}
   </div>
@@ -90,7 +93,7 @@
       grid-template-rows: repeat(6, 1fr);
       justify-content: flex-end;
       align-items: flex-start;
-      background: #BDBDBD;
+      background: #bdbdbd;
       grid-gap: 1px;
       border: 1px solid #bdbdbd;
       width: 100%;
@@ -116,7 +119,7 @@
           font-weight: 400;
           line-height: normal;
         }
-        &.today{
+        &.today {
           color: #ff0000;
           text-align: right;
           font-family: Helvetica;
@@ -130,7 +133,7 @@
           text-transform: lowercase;
         }
       }
-      .weekend{
+      .weekend {
         background: #ccc;
         color: #7b7b7b;
         text-align: right;

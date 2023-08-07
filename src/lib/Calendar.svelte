@@ -1,24 +1,23 @@
 <script>
-  import { formatDistance, subDays, format, isToday } from "date-fns";
+  import {format, isToday} from "date-fns";
   import eachDayOfInterval from "date-fns/eachDayOfInterval";
   import startOfMonth from "date-fns/startOfMonth";
-  import lastDayOfMonth from "date-fns/lastDayOfMonth";
   import isWeekend from "date-fns/isWeekend";
   import isFirstDayOfMonth from "date-fns/isFirstDayOfMonth";
   import startOfWeek from "date-fns/startOfWeek";
-  import endOfWeek from "date-fns/endOfWeek";
   import { ru } from "date-fns/locale";
   import setDefaultOptions from "date-fns/setDefaultOptions";
   import addDays from "date-fns/addDays";
-  import isThisMonth from 'date-fns/isThisMonth'
+  import getMonth from 'date-fns/getMonth'
+  import getDate from 'date-fns/getDate'
 
   setDefaultOptions({ locale: ru, weekStartsOn: 1 });
   //эьбгчжв умкичр
 
-  const today = new Date();
+  const today = new Date(2023,0,1);
   let before = startOfWeek(startOfMonth(today));
 
-  let last = addDays(endOfWeek(lastDayOfMonth(today)), 7);
+  let last = addDays(before, 41);
   const days = eachDayOfInterval({
     start: before,
     end: last,
@@ -44,11 +43,11 @@
     {#each days as day}
       <div
         class="item"
-        class:notNow={!isThisMonth(day) &&!isWeekend(day)}
-        class:today={isToday(day)}
+        class:notNow={getMonth(day)!=getMonth(today)}
+        class:today={getDate(day)==getDate(today)&&getMonth(day)==getMonth(today)}
         class:weekend={isWeekend(day)}
       >
-        {isFirstDayOfMonth(day)
+             {isFirstDayOfMonth(day)
           ? format(day, "d") + ` ` + format(day, "MMM")
           : format(day, "d")}
       </div>
@@ -120,7 +119,7 @@
           line-height: normal;
         }
         &.today {
-          color: #ff0000;
+          color: #ff0000 !important;
           text-align: right;
           font-family: Helvetica;
           font-size: 16px;
@@ -134,7 +133,7 @@
         }
       }
       .weekend {
-        background: #ccc;
+        background: #F5F5F5;
         color: #7b7b7b;
         text-align: right;
         font-family: Helvetica;

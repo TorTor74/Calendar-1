@@ -1,4 +1,5 @@
 <script>
+    import DayOfYear from "./DayOfYear.svelte";
     import { format, isToday, addMonths } from "date-fns";
     import getYear from "date-fns/getYear";
     import startOfYear from "date-fns/startOfYear";
@@ -16,10 +17,13 @@
     <header>{year}</header>
     <div class="grid-year">
         {#each months as month}
-            <div class="moth">{month}</div>
+            <div class="moth">{month}
+            <DayOfYear month={month}/>
+        </div>
         {/each}
     </div>
 </div>
+
 
 <style lang="scss">
     .container {

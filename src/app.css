@@ -3,3 +3,8 @@
   padding: 0;
   box-sizing: border-box;
 }
+@font-face {
+  font-family: "Helvetica";
+  src: url("https://candyfonts.com/wp-data/2018/10/26/11538/HELR45W.ttf")
+    format("woff");
+}

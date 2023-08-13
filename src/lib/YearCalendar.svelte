@@ -17,7 +17,7 @@
     <header>{year}</header>
     <div class="grid-year">
         {#each months as month}
-            <div class="moth">{month}
+            <div class="moth">
             <DayOfYear month={month}/>
         </div>
         {/each}
@@ -57,9 +57,10 @@
             grid-template-rows: repeat(3, 1fr);
             justify-content: flex-end;
             align-items: flex-start;
+            padding: 8px 46px;
             //background: #bdbdbd;
-            grid-gap: 1px;
-            border: 1px solid #bdbdbd;
+            grid-gap: 53px;
+           // border: 1px solid #bdbdbd;
             width: 100%;
             height: 100%;
             .month {

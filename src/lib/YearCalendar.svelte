@@ -5,7 +5,7 @@
     import startOfYear from "date-fns/startOfYear";
     import eachMonthOfInterval from "date-fns/eachMonthOfInterval";
 
-    const today = new Date(2023, 0, 1);
+    const today = new Date(1998, 5, 17);
     let year = getYear(today);
     let months = eachMonthOfInterval({
         start: startOfYear(today),
@@ -18,12 +18,11 @@
     <div class="grid-year">
         {#each months as month}
             <div class="moth">
-            <DayOfYear month={month}/>
-        </div>
+                <DayOfYear {month} {today} />
+            </div>
         {/each}
     </div>
 </div>
-
 
 <style lang="scss">
     .container {
@@ -35,21 +34,17 @@
         flex-direction: column;
 
         header {
-            // height: 40px;
             flex-shrink: 0;
             color: #272727;
             font-family: Helvetica;
-            font-size: 32px;
+            font-size: 31px;
             font-style: normal;
             line-height: normal;
             text-transform: lowercase;
             text-align: start;
-            padding: 9px 14px;
+            padding: 10px 14px;
             width: auto;
             height: auto;
-
-            //   grid-column-start: 1;
-            // grid-column-end: 8;
         }
         .grid-year {
             display: grid;
@@ -58,9 +53,7 @@
             justify-content: flex-end;
             align-items: flex-start;
             padding: 8px 46px;
-            //background: #bdbdbd;
-            grid-gap: 53px;
-           // border: 1px solid #bdbdbd;
+            grid-gap: 8px 53px;
             width: 100%;
             height: 100%;
             .month {
@@ -75,7 +68,7 @@
                 font-style: normal;
                 font-weight: 400;
                 line-height: normal;
-            }       
+            }
         }
     }
 </style>

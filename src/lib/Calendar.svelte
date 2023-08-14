@@ -1,5 +1,5 @@
 <script>
-  import {format, isToday} from "date-fns";
+  import {format,isSameDay,isSameMonth, isToday} from "date-fns";
   import eachDayOfInterval from "date-fns/eachDayOfInterval";
   import startOfMonth from "date-fns/startOfMonth";
   import isWeekend from "date-fns/isWeekend";
@@ -43,9 +43,9 @@
     {#each days as day}
       <div
         class="item"
-        class:notNow={getMonth(day)!=getMonth(today)}
-        class:today={getDate(day)==getDate(today)&&getMonth(day)==getMonth(today)}
-        class:weekend={isWeekend(day)}
+        class:notNow={!isSameMonth(day,today)}
+        class:today={isSameDay(day, today)}
+             class:weekend={isWeekend(day)}
       >
              {isFirstDayOfMonth(day)
           ? format(day, "d") + ` ` + format(day, "MMM")

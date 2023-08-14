@@ -1,9 +1,11 @@
 <script>
     import DayOfYear from "./DayOfYear.svelte";
-    import { format, isToday, addMonths } from "date-fns";
-    import getYear from "date-fns/getYear";
-    import startOfYear from "date-fns/startOfYear";
-    import eachMonthOfInterval from "date-fns/eachMonthOfInterval";
+    import {
+        addMonths,
+        getYear,
+        eachMonthOfInterval,
+        startOfYear,
+    } from "date-fns";
 
     const today = new Date(1998, 5, 17);
     let year = getYear(today);

@@ -1,20 +1,22 @@
 <script>
-  import {format,isSameDay,isSameMonth, isToday} from "date-fns";
-  import eachDayOfInterval from "date-fns/eachDayOfInterval";
-  import startOfMonth from "date-fns/startOfMonth";
-  import isWeekend from "date-fns/isWeekend";
-  import isFirstDayOfMonth from "date-fns/isFirstDayOfMonth";
-  import startOfWeek from "date-fns/startOfWeek";
+  import {
+    format,
+    isSameDay,
+    isSameMonth,
+    eachDayOfInterval,
+    startOfMonth,
+    isWeekend,
+    isFirstDayOfMonth,
+    startOfWeek,
+    setDefaultOptions,
+    addDays,
+  } from "date-fns";
   import { ru } from "date-fns/locale";
-  import setDefaultOptions from "date-fns/setDefaultOptions";
-  import addDays from "date-fns/addDays";
-  import getMonth from 'date-fns/getMonth'
-  import getDate from 'date-fns/getDate'
 
   setDefaultOptions({ locale: ru, weekStartsOn: 1 });
   //эьбгчжв умкичр
 
-  const today = new Date(2023,0,1);
+  const today = new Date(2023, 0, 1);
   let before = startOfWeek(startOfMonth(today));
 
   let last = addDays(before, 41);
@@ -22,7 +24,6 @@
     start: before,
     end: last,
   });
-
 </script>
 
 <div class="container">
@@ -43,11 +44,11 @@
     {#each days as day}
       <div
         class="item"
-        class:notNow={!isSameMonth(day,today)}
+        class:notNow={!isSameMonth(day, today)}
         class:today={isSameDay(day, today)}
-             class:weekend={isWeekend(day)}
+        class:weekend={isWeekend(day)}
       >
-             {isFirstDayOfMonth(day)
+        {isFirstDayOfMonth(day)
           ? format(day, "d") + ` ` + format(day, "MMM")
           : format(day, "d")}
       </div>
@@ -92,9 +93,9 @@
       grid-template-rows: repeat(6, 1fr);
       justify-content: flex-end;
       align-items: flex-start;
-      background: #E5E5E5;
+      background: #e5e5e5;
       grid-gap: 1px;
-      border: 1px solid #C7C7CC;
+      border: 1px solid #c7c7cc;
       width: 100%;
       height: 100%;
       .item {
@@ -133,7 +134,7 @@
         }
       }
       .weekend {
-        background: #F5F5F5;
+        background: #f5f5f5;
         color: #7b7b7b;
         text-align: right;
         font-family: Helvetica;

@@ -1,15 +1,17 @@
 <script>
-  import { format, isSameDay, isToday } from "date-fns";
-  import eachDayOfInterval from "date-fns/eachDayOfInterval";
-  import startOfMonth from "date-fns/startOfMonth";
-  import isWeekend from "date-fns/isWeekend";
-  import isFirstDayOfMonth from "date-fns/isFirstDayOfMonth";
-  import startOfWeek from "date-fns/startOfWeek";
+  import {
+    format,
+    isSameDay,
+    isSameMonth,
+    eachDayOfInterval,
+    startOfMonth,
+    isWeekend,
+    startOfWeek,
+    setDefaultOptions,
+    addDays,
+  } from "date-fns";
+
   import { ru } from "date-fns/locale";
-  import setDefaultOptions from "date-fns/setDefaultOptions";
-  import addDays from "date-fns/addDays";
-  import getMonth from "date-fns/getMonth";
-  import getDate from "date-fns/getDate";
 
   setDefaultOptions({ locale: ru, weekStartsOn: 1 });
   //эьбгчжв умкичр
@@ -43,7 +45,7 @@
     {#each days as day}
       <div
         class="item"
-        class:notNow={getMonth(day) != getMonth(month)}
+        class:notNow={!isSameMonth(day, today)}
         class:today={isSameDay(day, today)}
         class:weekend={isWeekend(day)}
       >
@@ -103,7 +105,7 @@
         }
         &.today {
           border-radius: 16px;
-          background: #F00;
+          background: #f00;
           color: #fff !important;
         }
         .month {

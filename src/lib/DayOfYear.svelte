@@ -14,18 +14,14 @@
   import { ru } from "date-fns/locale";
 
   setDefaultOptions({ locale: ru, weekStartsOn: 1 });
-  //эьбгчжв умкичр
 
   export let month;
   export let today;
 
-  let before = startOfWeek(startOfMonth(month));
+  const start = startOfWeek(startOfMonth(month));
 
-  let last = addDays(before, 41);
-  const days = eachDayOfInterval({
-    start: before,
-    end: last,
-  });
+  const end = addDays(start, 41);
+  const days = eachDayOfInterval({ start, end });
 </script>
 
 <div class="container">
@@ -45,7 +41,7 @@
     {#each days as day}
       <div
         class="item"
-        class:notNow={!isSameMonth(day, today)}
+        class:notNow={!isSameMonth(day, month)}
         class:today={isSameDay(day, today)}
         class:weekend={isWeekend(day)}
       >

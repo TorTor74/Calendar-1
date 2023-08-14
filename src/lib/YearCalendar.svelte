@@ -9,10 +9,9 @@
 
     const today = new Date(1998, 5, 17);
     let year = getYear(today);
-    let months = eachMonthOfInterval({
-        start: startOfYear(today),
-        end: addMonths(startOfYear(today), 11),
-    });
+    const start = startOfYear(today);
+    const end = addMonths(start, 11);
+    let months = eachMonthOfInterval({ start, end });
 </script>
 
 <div class="container">

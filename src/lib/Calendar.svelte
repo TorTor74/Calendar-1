@@ -17,13 +17,9 @@
   //эьбгчжв умкичр
 
   const today = new Date(2023, 0, 1);
-  let before = startOfWeek(startOfMonth(today));
-
-  let last = addDays(before, 41);
-  const days = eachDayOfInterval({
-    start: before,
-    end: last,
-  });
+  const start = startOfWeek(startOfMonth(today));
+  const end = addDays(start, 41);
+  const days = eachDayOfInterval({start,end,});
 </script>
 
 <div class="container">

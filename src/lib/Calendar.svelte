@@ -92,9 +92,9 @@
       grid-template-rows: repeat(6, 1fr);
       justify-content: flex-end;
       align-items: flex-start;
-      background: #bdbdbd;
+      background: #E5E5E5;
       grid-gap: 1px;
-      border: 1px solid #bdbdbd;
+      border: 1px solid #C7C7CC;
       width: 100%;
       height: 100%;
       .item {

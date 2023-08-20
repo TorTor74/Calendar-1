@@ -10,11 +10,13 @@
         eachHourOfInterval,
         startOfHour,
         addHours,
-        startOfMinute
+        startOfMinute,
+        getTime,
+        getMinutes,
     } from "date-fns";
     import Time from "./Time.svelte";
 
-    const today = new Date(1998, 5, 17);
+    const today = new Date();
 
     const start = startOfWeek(today);
 
@@ -46,12 +48,28 @@
     {/each}
 </div>
 <div class="flex-times">
-    <div class="times">
-        {#each times as hour}
-    <span>{format(startOfMinute(hour), "HH:MM")}</span>  
-        {/each}
+    <div class="head">
+        <span>Весь день</span>
+        <span /><span /><span /><span /><span />
     </div>
-    <Time />
+    <div class="grid-time">
+        <div class="times">
+            {#each times as hour}
+                <span>{format(startOfMinute(hour), "HH:MM")}</span>
+            {/each}
+           
+        </div>
+        <div class="timeline">
+            <div class="time">
+                {format(getTime(today), "hh:")}{format(
+                    getMinutes(today),
+                    "mm"
+                )}
+            </div>
+            <div class="line" />
+        </div>
+        <Time time={times} {days} />
+    </div>
 </div>
 
 <style lang="scss">
@@ -109,17 +127,71 @@
             }
         }
     }
-    .flex-times{
-        .times{
-display: flex;
-width: 70px;
-height: 572px;
-padding: 39px 0px;
-flex-direction: column;
-align-items: flex-end;
-gap: 34px;
-flex-shrink: 0;
-
+    .flex-times {
+        position: relative;
+        .head {
+            display: flex;
+            height: 20px;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 6px;
+            flex-shrink: 0;
+            border-bottom: 3px solid #d9d9d9;
+            span {
+                width: 156px;
+                // height: 46px;
+                flex-shrink: 0;
+                border: 1px solid #d9d9d9;
+            }
+        }
+        .grid-time {
+            display: flex;
+            .times {
+                display: flex;
+                width: 70px;
+                height: 572px;
+                padding: 39px 0px;
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 34px;
+                flex-shrink: 0;
+                span {
+                    display: flex;
+                    width: 70px;
+                    height: 13px;
+                    flex-direction: column;
+                    justify-content: center;
+                    flex-shrink: 0;
+                }
+            }
+        }
+        .timeline {
+            position: absolute;
+            display: flex;
+            width: 1173px;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            .time {
+                display: flex;
+                width: 70px;
+                height: 13px;
+                flex-direction: column;
+                justify-content: center;
+                flex-shrink: 0;
+                color: #eb4e3e;
+                text-align: right;
+                font-family: Helvetica;
+                font-size: 11px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+            .line {
+                width: 1098px;
+                height: 1px;
+                background: #eb4e3e;
+            }
         }
     }
 </style>

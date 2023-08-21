@@ -51,10 +51,10 @@
 </div>
 <div class="flex-times">
     <div class="head">
-        <span class="first">Весь день</span>
+        <!-- <span class="first">Весь день</span>
         <span />
         <span />
-        <span /><span /><span /><span /><span />
+        <span /><span /><span /><span /><span /> -->
     </div>
     <div class="grid-time">
         <div class="times">
@@ -108,10 +108,19 @@
             font-weight: 400;
             line-height: normal;
             gap: 2px;
+            text-transform: capitalize;
 
             flex-shrink: 0;
             &.notNow {
                 color: #bdbdbd;
+            }
+            &.weekend{
+                color: #808080;
+font-family: Helvetica;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;  
             }
             span {
                 flex-shrink: 0;

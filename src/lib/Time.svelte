@@ -26,16 +26,15 @@
 
 <style lang="scss">
     .grid {
-        display: flex;
-        width: 1098px;
-        height: 572px;
-        align-items: flex-start;
-        align-content: flex-start;
-        gap: 1px;
-        flex-shrink: 0;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+      grid-template-rows: repeat(25, 1fr);
+      justify-content: flex-end;
+      align-items: flex-start;
+      width: 100%;
+      height: 100%;
         .item {
-            width: 156px;
+            // width: 156px;
             height: 46px;
             flex-shrink: 0;
             border: 1px solid #d9d9d9;

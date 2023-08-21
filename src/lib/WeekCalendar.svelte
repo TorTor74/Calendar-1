@@ -49,7 +49,9 @@
 </div>
 <div class="flex-times">
     <div class="head">
-        <span>Весь день</span>
+        <span class="first">Весь день</span>
+        <span />
+        <span />
         <span /><span /><span /><span /><span />
     </div>
     <div class="grid-time">
@@ -57,14 +59,10 @@
             {#each times as hour}
                 <span>{format(startOfMinute(hour), "HH:MM")}</span>
             {/each}
-           
         </div>
         <div class="timeline">
             <div class="time">
-                {format(getTime(today), "hh:")}{format(
-                    getMinutes(today),
-                    "mm"
-                )}
+                {format(getTime(today), "hh:")}{format(getMinutes(today), "mm")}
             </div>
             <div class="line" />
         </div>
@@ -87,6 +85,11 @@
         height: auto;
     }
     .days {
+        align-items: center;
+        gap: 1px;
+        justify-content: space-evenly;
+        flex-shrink: 0;
+
         display: flex;
         padding: 0px 0px 0px 76px;
         .item {
@@ -132,17 +135,33 @@
         .head {
             display: flex;
             height: 20px;
-            justify-content: center;
-            align-items: flex-start;
             gap: 6px;
+            justify-content: space-evenly;
             flex-shrink: 0;
             border-bottom: 3px solid #d9d9d9;
             span {
-                width: 156px;
-                // height: 46px;
+                // width: 100%;
+                //width: 156px;
+                //height: 46px;
                 flex-shrink: 0;
                 border: 1px solid #d9d9d9;
+                 &.first {
+                display: flex;
+                width: 70px;
+                height: 20px;
+                flex-direction: column;
+                justify-content: center;
+                flex-shrink: 0;
+                color: #bdbdbd;
+                text-align: right;
+                font-family: Helvetica;
+                font-size: 11px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
             }
+            }
+           
         }
         .grid-time {
             display: flex;
@@ -155,6 +174,7 @@
                 align-items: flex-end;
                 gap: 34px;
                 flex-shrink: 0;
+                
                 span {
                     display: flex;
                     width: 70px;
@@ -162,6 +182,13 @@
                     flex-direction: column;
                     justify-content: center;
                     flex-shrink: 0;
+                    color: #BDBDBD;
+text-align: right;
+font-family: Helvetica;
+font-size: 11px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
                 }
             }
         }

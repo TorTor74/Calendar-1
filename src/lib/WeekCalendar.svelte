@@ -8,11 +8,12 @@
         isSameMonth,
         isWeekend,
         eachHourOfInterval,
-        startOfHour,
+        startOfDay,
         addHours,
         startOfMinute,
         getTime,
         getMinutes,
+        getHours,
     } from "date-fns";
     import Time from "./Time.svelte";
 
@@ -23,9 +24,10 @@
     const end = addDays(start, 6);
     const days = eachDayOfInterval({ start, end });
     const times = eachHourOfInterval({
-        start: startOfHour(today),
-        end: addHours(startOfHour(today), 24),
+        start: startOfDay(today),
+        end: addHours(startOfDay(today), 24),
     });
+    console.log(getMinutes(today))
 </script>
 
 <header>
@@ -57,12 +59,12 @@
     <div class="grid-time">
         <div class="times">
             {#each times as hour}
-                <span>{format(startOfMinute(hour), "HH:MM")}</span>
+                <span>{format(startOfMinute(hour), "HH:00")}</span>
             {/each}
         </div>
-        <div class="timeline">
+        <div class="timeline" style="--hour:{getHours(today)} ; --minutes:{getMinutes(today)}">
             <div class="time">
-                {format(getTime(today), "hh:")}{format(getMinutes(today), "mm")}
+                {format(getTime(today), "HH:")}{getMinutes(today)}
             </div>
             <div class="line" />
         </div>
@@ -131,7 +133,6 @@
         }
     }
     .flex-times {
-        position: relative;
         .head {
             display: flex;
             height: 20px;
@@ -145,26 +146,26 @@
                 //height: 46px;
                 flex-shrink: 0;
                 border: 1px solid #d9d9d9;
-                 &.first {
-                display: flex;
-                width: 70px;
-                height: 20px;
-                flex-direction: column;
-                justify-content: center;
-                flex-shrink: 0;
-                color: #bdbdbd;
-                text-align: right;
-                font-family: Helvetica;
-                font-size: 11px;
-                font-style: normal;
-                font-weight: 700;
-                line-height: normal;
+                &.first {
+                    display: flex;
+                    width: 70px;
+                    height: 20px;
+                    flex-direction: column;
+                    justify-content: center;
+                    flex-shrink: 0;
+                    color: #bdbdbd;
+                    text-align: right;
+                    font-family: Helvetica;
+                    font-size: 11px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: normal;
+                }
             }
-            }
-           
         }
         .grid-time {
             display: flex;
+            position: relative;
             .times {
                 display: flex;
                 width: 70px;
@@ -174,7 +175,7 @@
                 align-items: flex-end;
                 gap: 34px;
                 flex-shrink: 0;
-                
+
                 span {
                     display: flex;
                     width: 70px;
@@ -182,20 +183,21 @@
                     flex-direction: column;
                     justify-content: center;
                     flex-shrink: 0;
-                    color: #BDBDBD;
-text-align: right;
-font-family: Helvetica;
-font-size: 11px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+                    color: #bdbdbd;
+                    text-align: right;
+                    font-family: Helvetica;
+                    font-size: 11px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
                 }
             }
         }
         .timeline {
             position: absolute;
+            top:calc(46px / var(--minutes)  + var(--hour) * 46px + 39px);
             display: flex;
-            width: 1173px;
+            width: 100%;
             justify-content: center;
             align-items: center;
             gap: 6px;
@@ -215,7 +217,7 @@ line-height: normal;
                 line-height: normal;
             }
             .line {
-                width: 1098px;
+                width: 100%;
                 height: 1px;
                 background: #eb4e3e;
             }

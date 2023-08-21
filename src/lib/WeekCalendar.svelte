@@ -27,7 +27,7 @@
         start: startOfDay(today),
         end: addHours(startOfDay(today), 24),
     });
-    console.log(getMinutes(today))
+    console.log(today)
 </script>
 
 <header>
@@ -64,7 +64,7 @@
         </div>
         <div class="timeline" style="--hour:{getHours(today)} ; --minutes:{getMinutes(today)}">
             <div class="time">
-                {format(getTime(today), "HH:")}{getMinutes(today)}
+                {format(today, "HH:")}{format(today, "mm")}
             </div>
             <div class="line" />
         </div>
@@ -195,7 +195,7 @@
         }
         .timeline {
             position: absolute;
-            top:calc(46px / var(--minutes)  + var(--hour) * 46px + 39px);
+            top:calc(46px / 60 * var(--minutes)  + var(--hour) * 46px + 39px);
             display: flex;
             width: 100%;
             justify-content: center;

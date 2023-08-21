@@ -26,7 +26,7 @@
         start: startOfDay(today),
         end: addHours(startOfDay(today), 24),
     });
-    console.log(today)
+    console.log(today);
 </script>
 
 <header>
@@ -50,10 +50,10 @@
 </div>
 <div class="flex-times">
     <div class="head">
-        <!-- <span class="first">Весь день</span>
+        <span class="first">Весь день</span>
         <span />
         <span />
-        <span /><span /><span /><span /><span /> -->
+        <span /><span /><span /><span /><span />
     </div>
     <div class="grid-time">
         <div class="times">
@@ -61,7 +61,10 @@
                 <span>{format(startOfMinute(hour), "HH:00")}</span>
             {/each}
         </div>
-        <div class="timeline" style="--hour:{getHours(today)} ; --minutes:{getMinutes(today)}">
+        <div
+            class="timeline"
+            style="--hour:{getHours(today)} ; --minutes:{getMinutes(today)}"
+        >
             <div class="time">
                 {format(today, "HH:")}{format(today, "mm")}
             </div>
@@ -113,13 +116,13 @@
             &.notNow {
                 color: #bdbdbd;
             }
-            &.weekend{
+            &.weekend {
                 color: #808080;
-font-family: Helvetica;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;  
+                font-family: Helvetica;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
             }
             span {
                 flex-shrink: 0;
@@ -144,7 +147,7 @@ line-height: normal;
         .head {
             display: flex;
             height: 20px;
-            gap: 6px;
+            // gap: 6px;
             justify-content: space-evenly;
             flex-shrink: 0;
             border-bottom: 3px solid #d9d9d9;
@@ -153,6 +156,7 @@ line-height: normal;
                 //width: 156px;
                 //height: 46px;
                 flex-shrink: 0;
+                width: calc(100% / 8 );
                 border: 1px solid #d9d9d9;
                 &.first {
                     display: flex;
@@ -203,7 +207,7 @@ line-height: normal;
         }
         .timeline {
             position: absolute;
-            top:calc(46px / 60 * var(--minutes)  + var(--hour) * 46px + 39px);
+            top: calc(46px / 60 * var(--minutes) + var(--hour) * 46px + 39px);
             display: flex;
             width: 100%;
             justify-content: center;

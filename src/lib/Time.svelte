@@ -1,16 +1,6 @@
 <script>
     import {
-        format,
-        startOfWeek,
-        addDays,
-        eachDayOfInterval,
-        isSameDay,
-        isSameMonth,
         isWeekend,
-        eachHourOfInterval,
-        startOfHour,
-        addHours,
-        startOfMinute,
     } from "date-fns";
     export let days;
     export let time;

@@ -1,18 +1,12 @@
 <script>
 	import {
 		format,
-		startOfWeek,
-		addDays,
-		eachDayOfInterval,
 		isSameDay,
 		isSameMonth,
 		isWeekend,
 		eachHourOfInterval,
 		startOfDay,
 		addHours,
-		startOfMinute,
-		getMinutes,
-		getHours,
 	} from "date-fns";
     import Time from "./Time.svelte";
 

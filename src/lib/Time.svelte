@@ -23,10 +23,9 @@
         flex-direction: column;
         align-items: flex-start;
         align-content: flex-start;
-        gap: 1px;
         flex-shrink: 0;
         flex-wrap: wrap;
-        width: 100%;
+        width: calc(100% - 70px);
         height: calc(46px * 26);
         .item {
             width: calc(100% / 7);

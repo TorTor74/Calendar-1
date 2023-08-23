@@ -73,15 +73,14 @@
    
     .days {
 		align-items: center;
-		gap: 1px;
 		justify-content: space-evenly;
 		flex-shrink: 0;
-
+        width: calc(100% - 70px);
 		display: flex;
-		padding: 0px 0px 0px 76px;
     }
     .flex-times {
         display: flex;
+        position: relative;
         .head {
             display: flex;
             height: 20px;
@@ -145,7 +144,7 @@
         }
         .timeline {
             position: absolute;
-            top: calc(46px / 60 * var(--minutes) + var(--hour) * 46px + 39px);
+            top: calc(46px / 60 * var(--minutes) + var(--hour) * 46px + 91px);
             display: flex;
             width: 100%;
             justify-content: center;

@@ -1,35 +1,12 @@
 <script>
     import { isWeekend } from "date-fns";
-    export let days;
-    export let time;
 </script>
 
-<div class="grid">
-    {#each days as day}
-        {#each time as t}
-            <div class="item" class:weekend={isWeekend(day)}></div>
-        {/each}
-    {/each}
-</div>
+    <div class="time"></div>
 
 <style lang="scss">
-    .grid {
-        //     display: grid;
-        //     grid-template-columns: repeat(7, 1fr);
-        //   grid-template-rows: repeat(25, 1fr);
-        //   justify-content: flex-end;
-        //   align-items: flex-start;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        align-content: flex-start;
-        flex-shrink: 0;
-        flex-wrap: wrap;
-        width: calc(100% - 70px);
-        height: calc(46px * 26);
-        .item {
-            width: calc(100% / 7);
-
+   
+        .time {
             // width: 156px;
             height: 46px;
             flex-shrink: 0;
@@ -43,5 +20,5 @@
                 line-height: normal;
             }
         }
-    }
+    
 </style>

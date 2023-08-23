@@ -1,5 +1,5 @@
 <script>
-     import {
+    import {
         format,
         eachHourOfInterval,
         startOfDay,
@@ -14,37 +14,66 @@
         end: addHours(startOfDay(today), 24),
     });
 </script>
+
 <div class="times">
-    <span>весь день</span>
-    {#each times as hour}
-        <span>{format(startOfMinute(hour), "HH:00")}</span>
-    {/each}
+    <div class="allDay">весь день</div>
+    <div class="hours">
+        {#each times as hour}
+            <div class="hour">{format(startOfMinute(hour), "HH:00")}</div>
+        {/each}
+    </div>
 </div>
+
 <style lang="scss">
     .times {
+        display: flex;
+        width: 70px;
+        // height: 572px;
+        flex-direction: column;
+        align-items: flex-end;
+        flex-shrink: 0;
+        .allDay {
+            margin-top: 32px;
+            color: #bdbdbd;
+            text-align: right;
+            font-family: Helvetica;
+            font-size: 11px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            display: flex;
+            width: 70px;
+            height: 20px;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-end;
+            flex-shrink: 0;
+            border-bottom: 3px solid #d9d9d9;
+            border-top: 1px solid #d9d9d9;
+        }
+        .hours {
+            padding: 39px 0px;
+            display: flex;
+        width: 70px;
+        // height: 572px;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 34px;
+            .hour {
                 display: flex;
                 width: 70px;
-                height: 572px;
-                padding: 39px 0px;
+                height: 12px;
                 flex-direction: column;
-                align-items: flex-end;
-                gap: 34px;
+                justify-content: center;
                 flex-shrink: 0;
-
-                span {
-                    display: flex;
-                    width: 70px;
-                    height: 12px;
-                    flex-direction: column;
-                    justify-content: center;
-                    flex-shrink: 0;
-                    color: #bdbdbd;
-                    text-align: right;
-                    font-family: Helvetica;
-                    font-size: 11px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: normal;
-                }
+                color: #bdbdbd;
+                text-align: right;
+                font-family: Helvetica;
+                font-size: 11px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
             }
+        }
+    }
 </style>

@@ -4,19 +4,14 @@
         startOfWeek,
         addDays,
         eachDayOfInterval,
-        isSameDay,
-        isSameMonth,
-        isWeekend,
         eachHourOfInterval,
         startOfDay,
         addHours,
-        startOfMinute,
         getMinutes,
         getHours,
     } from "date-fns";
-    import Time from "./Time.svelte";
-	import TimeLine from "./TimeLine.svelte";
-	import DayOfWeek from "./DayOfWeek.svelte";
+    import TimeLine from "./TimeLine.svelte";
+    import DayOfWeek from "./DayOfWeek.svelte";
 
     const today = new Date();
 
@@ -24,11 +19,6 @@
 
     const end = addDays(start, 6);
     const days = eachDayOfInterval({ start, end });
-    const times = eachHourOfInterval({
-        start: startOfDay(today),
-        end: addHours(startOfDay(today), 24),
-    });
-    console.log(today);
 </script>
 
 <header>
@@ -38,22 +28,22 @@
     </header>
 </header>
 <div class="flex-times">
-<TimeLine/>
-<div class="days">
-    {#each days as day}
-        <DayOfWeek day={day} today={today} />
-    {/each}
-</div>
+    <TimeLine />
+    <div class="days">
+        {#each days as day}
+            <DayOfWeek {day} {today} />
+        {/each}
+    </div>
 
-        <div
-            class="timeline"
-            style="--hour:{getHours(today)} ; --minutes:{getMinutes(today)}"
-        >
-            <div class="time">
-                {format(today, "HH:")}{format(today, "mm")}
-            </div>
-            <div class="line" />
+    <div
+        class="timeline"
+        style="--hour:{getHours(today)} ; --minutes:{getMinutes(today)}"
+    >
+        <div class="time">
+            {format(today, "HH:mm")}
         </div>
+        <div class="line" />
+    </div>
 </div>
 
 <style lang="scss">
@@ -70,78 +60,24 @@
         width: auto;
         height: auto;
     }
-   
-    .days {
-		align-items: center;
-		justify-content: space-evenly;
-		flex-shrink: 0;
-        width: calc(100% - 70px);
-		display: flex;
-    }
+
     .flex-times {
         display: flex;
         position: relative;
-        .head {
-            display: flex;
-            height: 20px;
-            // gap: 6px;
+
+        .days {
+            align-items: center;
             justify-content: space-evenly;
-            // flex-shrink: 0;
-            border-bottom: 3px solid #d9d9d9;
-            span {
-                // width: 100%;
-                //width: 156px;
-                //height: 46px;
-                // flex-shrink: 0;
-                width: calc(100% / 8 );
-                border: 1px solid #d9d9d9;
-                &.first {
-                    display: flex;
-                    width: 70px;
-                    height: 20px;
-                    flex-direction: column;
-                    justify-content: center;
-                    flex-shrink: 0;
-                    color: #bdbdbd;
-                    text-align: right;
-                    font-family: Helvetica;
-                    font-size: 11px;
-                    font-style: normal;
-                    font-weight: 700;
-                    line-height: normal;
-                }
-            }
+            flex-shrink: 0;
+            width: calc(100% - 70px);
+            display: flex;
         }
+
         .grid-time {
             display: flex;
             position: relative;
-            .times {
-                display: flex;
-                width: 70px;
-                height: 572px;
-                padding: 39px 0px;
-                flex-direction: column;
-                align-items: flex-end;
-                gap: 34px;
-                flex-shrink: 0;
-
-                span {
-                    display: flex;
-                    width: 70px;
-                    height: 12px;
-                    flex-direction: column;
-                    justify-content: center;
-                    flex-shrink: 0;
-                    color: #bdbdbd;
-                    text-align: right;
-                    font-family: Helvetica;
-                    font-size: 11px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: normal;
-                }
-            }
         }
+
         .timeline {
             position: absolute;
             top: calc(46px / 60 * var(--minutes) + var(--hour) * 46px + 91px);
@@ -150,10 +86,12 @@
             justify-content: center;
             align-items: center;
             gap: 6px;
+
             .time {
                 display: flex;
                 width: 70px;
                 height: 13px;
+                padding-right: 3px;
                 flex-direction: column;
                 justify-content: center;
                 flex-shrink: 0;
@@ -165,6 +103,7 @@
                 font-weight: 400;
                 line-height: normal;
             }
+
             .line {
                 width: 100%;
                 height: 1px;

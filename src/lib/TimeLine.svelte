@@ -8,11 +8,9 @@
     } from "date-fns";
 
     const today = new Date();
-
-    const times = eachHourOfInterval({
-        start: startOfDay(today),
-        end: addHours(startOfDay(today), 24),
-    });
+    const start = startOfDay(today);
+    const end = addHours(startOfDay(today), 24);
+    const times = eachHourOfInterval({start, end});
 </script>
 
 <div class="times">
@@ -32,6 +30,9 @@
         flex-direction: column;
         align-items: flex-end;
         flex-shrink: 0;
+        position: sticky;
+        left: 0;
+
         .allDay {
             margin-top: 32px;
             color: #bdbdbd;
@@ -45,7 +46,7 @@
             width: 70px;
             height: 20px;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: space-evenly;
             align-items: flex-end;
             flex-shrink: 0;
             border-bottom: 3px solid #d9d9d9;
@@ -54,15 +55,16 @@
         .hours {
             padding: 39px 0px;
             display: flex;
-        width: 70px;
-        // height: 572px;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 34px;
+            width: 70px;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 34px;
+
             .hour {
                 display: flex;
                 width: 70px;
                 height: 12px;
+                padding-right: 3px;
                 flex-direction: column;
                 justify-content: center;
                 flex-shrink: 0;

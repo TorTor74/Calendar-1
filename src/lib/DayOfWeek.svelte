@@ -1,14 +1,10 @@
 <script>
-	import {
-		format,
-		isSameDay,
-		isSameMonth,
-		isWeekend,
-		eachHourOfInterval,
-		startOfDay,
-		addHours,
-	} from "date-fns";
+	import { format, isSameDay, isSameMonth, isWeekend, eachHourOfInterval, startOfDay, addHours } from "date-fns";
 	import Time from "./Time.svelte";
+	import { getContext } from "svelte";
+
+	const isWeek = getContext("isWeek");
+	$: console.log($isWeek);
 
 	export let day;
 	export let today;
@@ -19,16 +15,14 @@
 </script>
 
 <div class="item" class:weekend={isWeekend(day)}>
-	<div
-		class="day"
-		class:notNow={!isSameMonth(day, today)}
-		class:weekend={isWeekend(day)}
-	>
-		{format(day, "EEEEEE,")}
+	{#if $isWeek}
+		<div class="day" class:notNow={!isSameMonth(day, today)} class:weekend={isWeekend(day)}>
+			{format(day, "EEEEEE,")}
 
-		<span class:today={isSameDay(day, today)}>{format(day, "d")}</span>
-	</div>
-	<div class="allDay" />
+			<span class:today={isSameDay(day, today)}>{format(day, "d")}</span>
+		</div>
+	{/if}
+	<div class="allDay"/>
 	<div class="hours">
 		{#each times as hour}
 			<Time />
@@ -38,21 +32,6 @@
 
 <style lang="scss">
 	.item {
-		height: 100%;
-		width: calc(100% / 7);
-		&.weekend {
-			:global(.hours) {
-				background: #f5f5f5;
-				font-family: Helvetica;
-				font-size: 16px;
-				font-style: normal;
-				font-weight: 400;
-				line-height: normal;
-			}
-			.allDay {
-				background: #f5f5f5;
-			}
-		}
 		.allDay {
 			height: 20px;
 			border-top: unset;
@@ -77,7 +56,7 @@
 			text-transform: capitalize;
 			flex-shrink: 0;
 			position: sticky;
-			top:0px;
+			top: 0px;
 			&.notNow {
 				color: #bdbdbd;
 			}

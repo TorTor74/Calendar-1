@@ -34,7 +34,7 @@
         left: 0;
 
         .allDay {
-            margin-top: 32px;
+            // margin-top: 32px;
             color: #bdbdbd;
             text-align: right;
             font-family: Helvetica;
@@ -63,7 +63,7 @@
             .hour {
                 display: flex;
                 width: 70px;
-                height: 12px;
+                height: 13px;
                 padding-right: 3px;
                 flex-direction: column;
                 justify-content: center;

@@ -4,7 +4,6 @@
 	import { getContext } from "svelte";
 
 	const isWeek = getContext("isWeek");
-	$: console.log($isWeek);
 
 	export let day;
 	export let today;
@@ -22,7 +21,7 @@
 			<span class:today={isSameDay(day, today)}>{format(day, "d")}</span>
 		</div>
 	{/if}
-	<div class="allDay"/>
+	<div class="allDay" />
 	<div class="hours">
 		{#each times as hour}
 			<Time />

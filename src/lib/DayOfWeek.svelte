@@ -1,5 +1,5 @@
 <script>
-	import { format, isSameDay, isSameMonth, isWeekend, eachHourOfInterval, startOfDay, addHours } from "date-fns";
+	import { format, isSameDay, isWeekend, eachHourOfInterval, startOfDay, addHours } from "date-fns";
 	import Time from "./Time.svelte";
 	import { getContext } from "svelte";
 
@@ -7,6 +7,7 @@
 
 	export let day;
 	export let today;
+	
 	const start = startOfDay(today);
 	const end = addHours(start, 24);
 	const times = eachHourOfInterval({ start, end });

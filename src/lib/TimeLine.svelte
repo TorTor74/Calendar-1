@@ -1,5 +1,5 @@
 <script>
-    import { format, eachHourOfInterval, startOfDay, addHours, startOfMinute } from "date-fns";
+    import { format, eachHourOfInterval, startOfDay, addHours } from "date-fns";
 
     const today = new Date();
     const start = startOfDay(today);

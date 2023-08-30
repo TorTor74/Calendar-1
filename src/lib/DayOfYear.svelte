@@ -7,13 +7,8 @@
 		startOfMonth,
 		isWeekend,
 		startOfWeek,
-		setDefaultOptions,
 		addDays,
 	} from "date-fns";
-
-	import { ru } from "date-fns/locale";
-
-	setDefaultOptions({ locale: ru, weekStartsOn: 1 });
 
 	export let month;
 	export let today;

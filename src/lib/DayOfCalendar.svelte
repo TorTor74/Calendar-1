@@ -37,6 +37,10 @@
 		justify-content: flex-start;
 		align-items: start;
 		padding: 4px 0 6px;
+		position: sticky;
+		top: 0;
+		background: #fff;
+		z-index: 15;
 
 		.dateDay {
 			color: #000;
@@ -55,6 +59,9 @@
 			font-weight: 400;
 			line-height: normal;
 		}
+	}
+	:global(.times .allDay){
+		top: 58px !important;
 	}
 	.time {
 		display: flex;
@@ -82,6 +89,9 @@
 				border-bottom: 3px solid #d9d9d9;
 				border-top: 1px solid #d9d9d9;
 				width: 100%;
+				position: sticky;
+				top:58px;
+				background: #fff;
 			}
 		}
 	}

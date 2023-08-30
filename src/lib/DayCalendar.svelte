@@ -1,11 +1,6 @@
 <script>
-	import { getContext } from "svelte";
 	import DayOfCalendar from "./DayOfCalendar.svelte";
-	import DayOfYear from "./DayOfYear.svelte";
-	import { getMonth } from "date-fns";
 	import DayOfYearNew from "./MonthOfYear.svelte";
-	const today = getContext("today");
-	const month = getMonth(today);
 </script>
 
 <div class="container">

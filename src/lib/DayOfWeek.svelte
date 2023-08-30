@@ -7,15 +7,14 @@
 
 	export let day;
 	export let today;
-	const times = eachHourOfInterval({
-		start: startOfDay(today),
-		end: addHours(startOfDay(today), 24),
-	});
+	const start = startOfDay(today);
+	const end = addHours(start, 24);
+	const times = eachHourOfInterval({ start, end });
 </script>
 
 <div class="item" class:weekend={isWeekend(day)}>
 	{#if $isWeek}
-		<div class="day" class:notNow={!isSameMonth(day, today)} class:weekend={isWeekend(day)}>
+		<div class="day">
 			{format(day, "EEEEEE,")}
 
 			<span class:today={isSameDay(day, today)}>{format(day, "d")}</span>
@@ -31,6 +30,16 @@
 
 <style lang="scss">
 	.item {
+		&.weekend {
+			.day {
+				color: #808080;
+				font-family: Helvetica;
+				font-size: 16px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: normal;
+			}
+		}
 		.allDay {
 			height: 20px;
 			border-top: unset;
@@ -56,17 +65,7 @@
 			flex-shrink: 0;
 			position: sticky;
 			top: 0px;
-			&.notNow {
-				color: #bdbdbd;
-			}
-			&.weekend {
-				color: #808080;
-				font-family: Helvetica;
-				font-size: 16px;
-				font-style: normal;
-				font-weight: 400;
-				line-height: normal;
-			}
+
 			span {
 				flex-shrink: 0;
 				display: flex;

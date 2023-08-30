@@ -3,7 +3,7 @@
 
     const today = new Date();
     const start = startOfDay(today);
-    const end = addHours(startOfDay(today), 24);
+    const end = addHours(start, 24);
     const times = eachHourOfInterval({ start, end });
 </script>
 
@@ -11,7 +11,7 @@
     <div class="allDay">весь день</div>
     <div class="hours">
         {#each times as hour}
-            <div class="hour">{format(startOfMinute(hour), "HH:00")}</div>
+            <div class="hour">{format(hour, "HH:mm")}</div>
         {/each}
     </div>
 </div>

@@ -63,7 +63,7 @@
             .hour {
                 display: flex;
                 width: 70px;
-                height: 13px;
+                height: 12px;
                 padding-right: 3px;
                 flex-direction: column;
                 justify-content: center;

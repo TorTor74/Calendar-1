@@ -12,8 +12,10 @@
 
 	const isWeek = writable(false);
 	const today = writable(new Date());
+	const selectedDay=writable(new Date());
 	setContext("isWeek", isWeek);
 	setContext("today", today);
+	setContext("selectedDay",selectedDay)
 </script>
 
 <main>

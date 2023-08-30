@@ -4,8 +4,9 @@
 	import TimeLine from "./TimeLine.svelte";
 	import Line from "./Line.svelte";
     import { getContext } from "svelte";
-	const today = new Date();
-	const day=getContext('today')
+	//const today = new Date();
+	const day=getContext('selectedDay')
+	const today=getContext('today')
 	// const day = new Date();
 </script>
 
@@ -21,7 +22,7 @@
 	</div>
 	<div class="time">
 		<TimeLine />
-		<DayOfWeek day={$day} {today} />
+		<DayOfWeek day={$day} today={$today} />
 		<Line />
 	</div>
 </div>
@@ -30,14 +31,14 @@
 	.day {
 		width: 869px;
 		flex-shrink: 0;
-		padding: 4px 0 0 16px;
+		padding: 0 0 0 12px;
 	}
 	.header {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
 		align-items: start;
-		border-bottom: 1px solid #e5e5e5;
+		padding: 4px 0 6px;
 
 		.dateDay {
 			color: #000;
@@ -66,12 +67,24 @@
 			flex-direction: column;
 			align-items: flex-start;
 			flex-shrink: 0;
+			width: 764px;
+
+
 			:global(.hours){
-				width: 764px;
-				border-top:3px solid #EDEDED;
+				width: 100%;
+				
+				:global(.time){
+					border-left: unset;
+				border-right: unset;
+				}
 			}
+			
 			:global(.allDay){
 				border: unset;
+				height: 20px;
+				border-bottom: 3px solid #D9D9D9;
+				border-top: 1px solid #D9D9D9;
+				width: 100%;
 			}
 		}
 	}

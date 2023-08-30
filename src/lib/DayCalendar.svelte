@@ -3,7 +3,7 @@
 	import DayOfCalendar from "./DayOfCalendar.svelte";
 	import DayOfYear from "./DayOfYear.svelte";
 	import { getMonth } from "date-fns";
-	import DayOfYearNew from "./DayOfYearNew.svelte";
+	import DayOfYearNew from "./MonthOfYear.svelte";
 	const today = getContext("today");
 	const month = getMonth(today);
 </script>
@@ -12,7 +12,7 @@
 	<DayOfCalendar />
 	<div class="month">
 		<DayOfYearNew />
-		<div class="even">Нет событий</div>
+		<div class="even">Нет входящих событий</div>
 	</div>
 </div>
 

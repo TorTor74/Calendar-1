@@ -7,7 +7,7 @@
 
 	export let day;
 	export let today;
-	
+
 	const start = startOfDay(today);
 	const end = addHours(start, 24);
 	const times = eachHourOfInterval({ start, end });
@@ -46,6 +46,9 @@
 			border-top: unset;
 			border: 1px solid #d9d9d9;
 			border-bottom: 3px solid #d9d9d9;
+			position: sticky;
+			background: #fff;
+			top:32px;
 		}
 		.day {
 			display: flex;

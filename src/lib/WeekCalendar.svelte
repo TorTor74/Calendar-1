@@ -1,24 +1,17 @@
 <script>
-	import {
-		format,
-		startOfWeek,
-		addDays,
-		eachDayOfInterval,
-		getMinutes,
-		getHours,
-	} from "date-fns";
+	import { format, startOfWeek, addDays, eachDayOfInterval, getMinutes, getHours } from "date-fns";
 	import TimeLine from "./TimeLine.svelte";
 	import DayOfWeek from "./DayOfWeek.svelte";
-	import {getContext} from "svelte"
+	import { getContext } from "svelte";
 
-	const isWeek=getContext("isWeek")
+	const isWeek = getContext("isWeek");
 	const today = new Date();
 
 	const start = startOfWeek(today);
 
 	const end = addDays(start, 6);
 	const days = eachDayOfInterval({ start, end });
-	$isWeek=true
+	$isWeek = true;
 </script>
 
 <header>
@@ -90,7 +83,9 @@
 			display: flex;
 			position: relative;
 		}
-
+		:global(.times .allDay) {
+			margin-top: 32px;
+		}
 		.timeline {
 			position: absolute;
 			top: calc(46px / 60 * var(--minutes) + var(--hour) * 46px + 91px);

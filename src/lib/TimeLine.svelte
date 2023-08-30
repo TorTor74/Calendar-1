@@ -45,6 +45,9 @@
             flex-shrink: 0;
             border-bottom: 3px solid #d9d9d9;
             border-top: 1px solid #d9d9d9;
+            position: sticky;
+            background: #fff;
+            top:32px
         }
         .hours {
             padding: 39px 0px;

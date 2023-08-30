@@ -1,16 +1,10 @@
 <script>
-    import {
-        format,
-        eachHourOfInterval,
-        startOfDay,
-        addHours,
-        startOfMinute,
-    } from "date-fns";
+    import { format, eachHourOfInterval, startOfDay, addHours, startOfMinute } from "date-fns";
 
     const today = new Date();
     const start = startOfDay(today);
     const end = addHours(startOfDay(today), 24);
-    const times = eachHourOfInterval({start, end});
+    const times = eachHourOfInterval({ start, end });
 </script>
 
 <div class="times">

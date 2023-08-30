@@ -7,21 +7,13 @@
 		startOfMonth,
 		isWeekend,
 		startOfWeek,
-		setDefaultOptions,
 		addDays,
-		getMonth,
 	} from "date-fns";
 
-	import { ru } from "date-fns/locale";
-	import { afterUpdate, getContext } from "svelte";
-
-	setDefaultOptions({ locale: ru, weekStartsOn: 1 });
+	import { getContext } from "svelte";
 
 	const today = getContext("today");
 	const selectedDay = getContext("selectedDay");
-	let month = getMonth($selectedDay);
-	console.log(month);
-
 	let start = startOfWeek(startOfMonth($selectedDay));
 
 	let end = addDays(start, 41);
@@ -90,6 +82,7 @@
 			align-items: flex-start;
 			width: 100%;
 			height: 100%;
+
 			.item {
 				display: flex;
 				justify-content: center;

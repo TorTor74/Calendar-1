@@ -3,10 +3,10 @@
 	import Time from "./Time.svelte";
 	import { getContext } from "svelte";
 
-	const isWeek = getContext("isWeek");
 
 	export let day;
 	export let today;
+	export let isWeek;
 
 	const start = startOfDay(today);
 	const end = addHours(start, 24);

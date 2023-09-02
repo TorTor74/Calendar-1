@@ -4,14 +4,12 @@
 	import DayOfWeek from "./DayOfWeek.svelte";
 	import { getContext } from "svelte";
 
-	const isWeek = getContext("isWeek");
 	const today = new Date();
-
 	const start = startOfWeek(today);
 
 	const end = addDays(start, 6);
 	const days = eachDayOfInterval({ start, end });
-	$isWeek = true;
+	const isWeek = true;
 </script>
 
 <header>
@@ -24,7 +22,7 @@
 	<TimeLine />
 	<div class="days">
 		{#each days as day}
-			<DayOfWeek {day} {today} />
+			<DayOfWeek {day} {today} {isWeek} />
 		{/each}
 	</div>
 

@@ -6,6 +6,7 @@
 	import { getContext } from "svelte";
 	const day = getContext("selectedDay");
 	const today = getContext("today");
+	const isWeek = false;
 </script>
 
 <div class="day">
@@ -20,7 +21,7 @@
 	</div>
 	<div class="time">
 		<TimeLine />
-		<DayOfWeek day={$day} today={$today} />
+		<DayOfWeek day={$day} today={$today} {isWeek} />
 		<Line />
 	</div>
 </div>

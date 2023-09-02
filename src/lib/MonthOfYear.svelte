@@ -73,7 +73,7 @@
 			height: auto;
 		}
 		.grid-calendar {
-			grid-gap: 6px 28px;
+			grid-gap: 6px 22px;
 			padding: 5px 8px 6px 8px;
 			display: grid;
 			grid-template-columns: repeat(7, 1fr);
@@ -93,8 +93,8 @@
 				color: #272727;
 				text-align: center;
 				font-family: Helvetica;
-				width: 16px;
-				height: 16px;
+				width: 21px;
+				height: 21px;
 				font-size: 13px;
 				font-style: normal;
 				font-weight: 400;

@@ -14,7 +14,7 @@
 </script>
 
 <div class="item" class:weekend={isWeekend(day)}>
-	{#if $isWeek}
+	{#if isWeek}
 		<div class="day">
 			{format(day, "EEEEEE,")}
 

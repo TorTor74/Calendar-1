@@ -7,7 +7,7 @@
 	<DayOfCalendar />
 	<div class="month">
 		<DayOfYearNew />
-		<div class="even">Нет входящих событий</div>
+		<div class="event">Нет входящих событий</div>
 	</div>
 </div>
 
@@ -15,26 +15,26 @@
 	.container {
 		display: flex;
 		width: 100%;
+		flex-shrink: 1;
 		.month {
 			background: #e5e6e7;
-			:global(.dateMonth){
-				margin: 6px  13px 0 11px;
+			:global(.dateMonth) {
+				margin: 6px 13px 0 11px;
 			}
-			.even {
+			.event {
 				display: flex;
-				width: 321px;
+				// width: 321px;
 				height: 446px;
-				padding: 178px 68px 249px 68px;
-				flex-direction: column;
 				align-items: center;
+				justify-content: center;
 				flex-shrink: 0;
-				color: #A5A6A7;
-text-align: right;
-font-family: Helvetica ;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+				color: #a5a6a7;
+				text-align: right;
+				font-family: Helvetica;
+				font-size: 16px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: normal;
 			}
 		}
 	}

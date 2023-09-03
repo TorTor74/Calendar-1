@@ -28,8 +28,8 @@
 
 <style lang="scss">
 	.day {
-		width: 869px;
-		flex-shrink: 0;
+		width: 100%;
+		flex-shrink: 1;
 		padding: 0 0 0 12px;
 	}
 	.header {
@@ -61,7 +61,7 @@
 			line-height: normal;
 		}
 	}
-	:global(.times .allDay){
+	:global(.times .allDay) {
 		top: 58px !important;
 	}
 	.time {
@@ -72,8 +72,8 @@
 			display: flex;
 			flex-direction: column;
 			align-items: flex-start;
-			flex-shrink: 0;
-			width: 764px;
+			flex-shrink: 1;
+			width: 100%;
 
 			:global(.hours) {
 				width: 100%;
@@ -91,7 +91,7 @@
 				border-top: 1px solid #d9d9d9;
 				width: 100%;
 				position: sticky;
-				top:58px;
+				top: 58px;
 				background: #fff;
 			}
 		}

@@ -40,7 +40,6 @@
 				class="item"
 				class:notNow={!isSameMonth(day, $selectedDay)}
 				class:today={isSameDay(day, $today)}
-				class:todaySelected={isSameDay(day, $today) && isSameDay(day, $selectedDay)}
 				class:selected={isSameDay(day, $selectedDay)}
 				class:weekend={isWeekend(day)}
 				on:click={() => ($selectedDay = day)}
@@ -99,9 +98,6 @@
 				font-style: normal;
 				font-weight: 400;
 				line-height: normal;
-				&.notNow {
-					color: #bdbdbd;
-				}
 				&.today {
 					border-radius: 16px;
 					color: #f00 !important;
@@ -111,11 +107,15 @@
 					background: #272727;
 					color: #fff !important;
 				}
-				&.todaySelected {
+				&.today &.selected {
 					border-radius: 16px;
-					background: #f00;
+					background: #f00!important;
 					color: #fff !important;
 				}
+				&.notNow {
+					color: #bdbdbd;
+				}
+				
 				.month {
 					padding-left: 5px;
 					text-transform: lowercase;

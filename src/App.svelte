@@ -7,6 +7,7 @@
 	import DayCalendar from "./lib/DayCalendar.svelte";
 	import { setContext } from "svelte";
 	import { writable } from "svelte/store";
+    import Layout from "./lib/layout.svelte";
 
 	setDefaultOptions({ locale: ru, weekStartsOn: 1 });
 
@@ -20,7 +21,8 @@
 	<!-- <YearCalendar/> -->
 	<!-- <Calendar /> -->
 	<!-- <WeekCalendar /> -->
-	<DayCalendar />
+	<!-- <DayCalendar /> -->
+<Layout/>
 </main>
 
 <style>

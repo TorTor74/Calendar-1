@@ -1,10 +1,11 @@
 <script>
 	import DayOfYear from "./DayOfYear.svelte";
 	import { addMonths, getYear, eachMonthOfInterval, startOfYear } from "date-fns";
+    import { getContext } from "svelte";
 
-	const today = new Date(1998, 5, 17);
-	let year = getYear(today);
-	const start = startOfYear(today);
+	const today = getContext("today");
+	let year = getYear($today);
+	const start = startOfYear($today);
 	const end = addMonths(start, 11);
 	let months = eachMonthOfInterval({ start, end });
 </script>
@@ -14,7 +15,7 @@
 	<div class="grid-year">
 		{#each months as month}
 			<div class="moth">
-				<DayOfYear {month} {today} />
+				<DayOfYear {month} today={$today} />
 			</div>
 		{/each}
 	</div>
@@ -22,8 +23,8 @@
 
 <style lang="scss">
 	.container {
-		width: 100vw;
-		height: 100vh;
+		// width: 100vw;
+		// height: 100vh;
 		display: flex;
 		justify-content: flex-start;
 		align-items: baseline;

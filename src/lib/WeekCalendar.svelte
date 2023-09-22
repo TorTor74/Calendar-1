@@ -83,6 +83,7 @@
 		}
 		:global(.times .allDay) {
 			margin-top: 32px;
+			top: 32px!important;
 		}
 		.timeline {
 			position: absolute;

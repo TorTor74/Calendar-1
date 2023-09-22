@@ -8,24 +8,24 @@
 		isWeekend,
 		isFirstDayOfMonth,
 		startOfWeek,
-		setDefaultOptions,
 		addDays,
 	} from "date-fns";
 	import { ru } from "date-fns/locale";
+    import { getContext } from "svelte";
 
-	setDefaultOptions({ locale: ru, weekStartsOn: 1 });
 	//эьбгчжв умкичр
 
-	const today = new Date(2023, 0, 1);
-	const start = startOfWeek(startOfMonth(today));
+	const today = getContext("today");
+
+	const start = startOfWeek(startOfMonth($today));
 	const end = addDays(start, 41);
 	const days = eachDayOfInterval({ start, end });
 </script>
 
 <div class="container">
 	<header>
-		<b>{format(today, "LLLL")}</b>
-		{format(today, "yyyy")}<b>г.</b>
+		<b>{format($today, "LLLL")}</b>
+		{format($today, "yyyy")}<b>г.</b>
 	</header>
 	<div class="days">
 		<div class="day">Пн</div>
@@ -40,8 +40,8 @@
 		{#each days as day}
 			<div
 				class="item"
-				class:notNow={!isSameMonth(day, today)}
-				class:today={isSameDay(day, today)}
+				class:notNow={!isSameMonth(day, $today)}
+				class:today={isSameDay(day, $today)}
 				class:weekend={isWeekend(day)}
 			>
 				{isFirstDayOfMonth(day) ? format(day, "d") + ` ` + format(day, "MMM") : format(day, "d")}
@@ -56,8 +56,8 @@
 		src: url("https://candyfonts.com/wp-data/2018/10/26/11538/HELR45W.ttf") format("woff");
 	}
 	.container {
-		width: 100vw;
-		height: 100vh;
+		// width: 100vw;
+		height: 100%;
 		display: flex;
 		justify-content: flex-start;
 		align-items: baseline;

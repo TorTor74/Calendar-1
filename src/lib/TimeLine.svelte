@@ -1,8 +1,9 @@
 <script>
     import { format, eachHourOfInterval, startOfDay, addHours } from "date-fns";
+    import {getContext} from "svelte";
 
-    const today = new Date();
-    const start = startOfDay(today);
+    const today = getContext("today");
+    const start = startOfDay($today);
     const end = addHours(start, 24);
     const times = eachHourOfInterval({ start, end });
 </script>
@@ -47,7 +48,8 @@
             border-top: 1px solid #d9d9d9;
             position: sticky;
             background: #fff;
-            top:32px
+            top:90px;
+            z-index: 15;
         }
         .hours {
             padding: 39px 0px;

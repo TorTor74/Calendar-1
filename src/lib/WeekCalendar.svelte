@@ -4,8 +4,8 @@
 	import DayOfWeek from "./DayOfWeek.svelte";
 	import { getContext } from "svelte";
 
-	const today = new Date();
-	const start = startOfWeek(today);
+	const today = getContext("today");
+	const start = startOfWeek($today);
 
 	const end = addDays(start, 6);
 	const days = eachDayOfInterval({ start, end });
@@ -14,21 +14,21 @@
 
 <header>
 	<header>
-		<b>{format(today, "LLLL")}</b>
-		{format(today, "yyyy")}<b>г.</b>
+		<b>{format($today, "LLLL")}</b>
+		{format($today, "yyyy")}<b>г.</b>
 	</header>
 </header>
 <div class="flex-times">
 	<TimeLine />
 	<div class="days">
 		{#each days as day}
-			<DayOfWeek {day} {today} {isWeek} />
+			<DayOfWeek {day} today={$today} {isWeek} />
 		{/each}
 	</div>
 
-	<div class="timeline" style="--hour:{getHours(today)} ; --minutes:{getMinutes(today)}">
+	<div class="timeline" style="--hour:{getHours($today)} ; --minutes:{getMinutes($today)}">
 		<div class="time">
-			{format(today, "HH:mm")}
+			{format($today, "HH:mm")}
 		</div>
 		<div class="line" />
 	</div>
@@ -47,6 +47,10 @@
 		padding: 9px 14px;
 		width: auto;
 		height: auto;
+		position: sticky;
+		top:32px;
+		background: #fff;
+		z-index: 20;
 	}
 
 	.flex-times {
@@ -83,7 +87,8 @@
 		}
 		:global(.times .allDay) {
 			margin-top: 32px;
-			top: 32px!important;
+			position: sticky;
+			top: 134px;
 		}
 		.timeline {
 			position: absolute;

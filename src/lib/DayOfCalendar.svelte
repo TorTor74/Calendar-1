@@ -39,7 +39,7 @@
 		align-items: start;
 		padding: 4px 0 6px;
 		position: sticky;
-		top: 0;
+		top: 32px;
 		background: #fff;
 		z-index: 15;
 
@@ -62,7 +62,8 @@
 		}
 	}
 	:global(.times .allDay) {
-		top: 58px !important;
+		top: 58px;
+
 	}
 	.time {
 		display: flex;
@@ -91,7 +92,8 @@
 				border-top: 1px solid #d9d9d9;
 				width: 100%;
 				position: sticky;
-				top: 58px;
+				top: 90px;
+				z-index: 15;
 				background: #fff;
 			}
 		}

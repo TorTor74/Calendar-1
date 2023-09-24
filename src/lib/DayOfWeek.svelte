@@ -48,7 +48,8 @@
 			border-bottom: 3px solid #d9d9d9;
 			position: sticky;
 			background: #fff;
-			top:32px;
+			top:136px;
+			z-index: 15;
 		}
 		.day {
 			display: flex;
@@ -68,7 +69,8 @@
 			text-transform: capitalize;
 			flex-shrink: 0;
 			position: sticky;
-			top: 0px;
+			top: 104px;
+			z-index: 15;
 
 			span {
 				flex-shrink: 0;

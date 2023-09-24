@@ -4,12 +4,14 @@
 		getMinutes,
 		getHours,
 	} from "date-fns";
-    const today = new Date();
+		import {getContext} from "svelte";
+
+	const today = getContext("today");
 
 </script>
-<div class="timeline" style="--hour:{getHours(today)} ; --minutes:{getMinutes(today)}">
+<div class="timeline" style="--hour:{getHours($today)} ; --minutes:{getMinutes($today)}">
     <div class="time">
-        {format(today, "HH:mm")}
+        {format($today, "HH:mm")}
     </div>
     <div class="line" />
 </div>

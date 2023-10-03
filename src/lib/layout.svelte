@@ -16,6 +16,7 @@
         </div>
     </div>
     <div class="content">
+        <Route path="/" redirect="/day"/>
         <Route path="/day"><DayCalendar /></Route>
         <Route path="/week"><WeekCalendar /></Route>
         <Route path="/month"><Calendar /></Route>

@@ -24,10 +24,6 @@
         <Route path="/week"><WeekCalendar /></Route>
         <Route path="/month"><Calendar /></Route>
         <Route path="year"><YearCalendar /></Route>
-        <!-- <YearCalendar/> -->
-        <!-- <Calendar /> -->
-        <!-- <WeekCalendar /> -->
-        <!-- <DayCalendar /> -->
     </div>
 </div>
 

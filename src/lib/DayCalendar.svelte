@@ -23,7 +23,6 @@
 			}
 			.event {
 				display: flex;
-				// width: 321px;
 				height: 446px;
 				align-items: center;
 				justify-content: center;

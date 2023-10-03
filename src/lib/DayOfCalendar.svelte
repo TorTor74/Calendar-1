@@ -4,8 +4,8 @@
 	import TimeLine from "./TimeLine.svelte";
 	import Line from "./Line.svelte";
 	import { getContext } from "svelte";
+	
 	const day = getContext("selectedDay");
-	const today = getContext("today");
 	const isWeek = false;
 </script>
 
@@ -21,7 +21,7 @@
 	</div>
 	<div class="time">
 		<TimeLine />
-		<DayOfWeek day={$day} today={$today} {isWeek} />
+		<DayOfWeek day={$day} {isWeek} />
 		<Line />
 	</div>
 </div>

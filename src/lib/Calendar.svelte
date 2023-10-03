@@ -10,8 +10,7 @@
 		startOfWeek,
 		addDays,
 	} from "date-fns";
-	import { ru } from "date-fns/locale";
-    import { getContext } from "svelte";
+	import { getContext } from "svelte";
 
 	//эьбгчжв умкичр
 
@@ -56,7 +55,6 @@
 		src: url("https://candyfonts.com/wp-data/2018/10/26/11538/HELR45W.ttf") format("woff");
 	}
 	.container {
-		// width: 100vw;
 		height: 100%;
 		display: flex;
 		justify-content: flex-start;
@@ -64,7 +62,6 @@
 		flex-direction: column;
 
 		header {
-			// height: 40px;
 			flex-shrink: 0;
 			color: #272727;
 			font-family: Helvetica;
@@ -76,9 +73,6 @@
 			padding: 9px 14px;
 			width: auto;
 			height: auto;
-
-			//   grid-column-start: 1;
-			// grid-column-end: 8;
 		}
 		.grid-calendar {
 			display: grid;

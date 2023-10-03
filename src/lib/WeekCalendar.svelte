@@ -22,7 +22,7 @@
 	<TimeLine />
 	<div class="days">
 		{#each days as day}
-			<DayOfWeek {day} today={$today} {isWeek} />
+			<DayOfWeek {day} {isWeek} />
 		{/each}
 	</div>
 

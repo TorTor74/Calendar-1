@@ -15,7 +15,7 @@
 	<div class="grid-year">
 		{#each months as month}
 			<div class="moth">
-				<DayOfYear {month} today={$today} />
+				<DayOfYear {month} />
 			</div>
 		{/each}
 	</div>

@@ -5,10 +5,11 @@
 
 
 	export let day;
-	export let today;
 	export let isWeek;
 
-	const start = startOfDay(today);
+	const today=getContext("today");
+	const start = startOfDay($today);
+	
 	const end = addHours(start, 24);
 	const times = eachHourOfInterval({ start, end });
 </script>
@@ -18,7 +19,7 @@
 		<div class="day">
 			{format(day, "EEEEEE,")}
 
-			<span class:today={isSameDay(day, today)}>{format(day, "d")}</span>
+			<span class:today={isSameDay(day, $today)}>{format(day, "d")}</span>
 		</div>
 	{/if}
 	<div class="allDay" />

@@ -21,7 +21,6 @@
     .times {
         display: flex;
         width: 70px;
-        // height: 572px;
         flex-direction: column;
         align-items: flex-end;
         flex-shrink: 0;
@@ -29,7 +28,6 @@
         left: 0;
 
         .allDay {
-            // margin-top: 32px;
             color: #bdbdbd;
             text-align: right;
             font-family: Helvetica;

@@ -9,9 +9,11 @@
 		startOfWeek,
 		addDays,
 	} from "date-fns";
+	import { getContext } from "svelte";
 
 	export let month;
-	export let today;
+
+	const today = getContext("today");
 
 	const start = startOfWeek(startOfMonth(month));
 
@@ -37,7 +39,7 @@
 			<div
 				class="item"
 				class:notNow={!isSameMonth(day, month)}
-				class:today={isSameDay(day, today)&&isSameMonth(day, month)}
+				class:today={isSameDay(day, $today) && isSameMonth(day, month)}
 				class:weekend={isWeekend(day)}
 			>
 				{format(day, "d")}

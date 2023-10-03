@@ -37,7 +37,7 @@
 			<div
 				class="item"
 				class:notNow={!isSameMonth(day, month)}
-				class:today={isSameDay(day, today)}
+				class:today={isSameDay(day, today)&&isSameMonth(day, month)}
 				class:weekend={isWeekend(day)}
 			>
 				{format(day, "d")}

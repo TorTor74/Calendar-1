@@ -10,13 +10,16 @@
     <div class="header">
         <div class="navigate">
             <a class="item" use:active href="/day">День</a>
+            <div class="line" />
             <a class="item" use:active href="/week">Неделя</a>
+            <div class="line" />
             <a class="item" use:active href="/month">Месяц</a>
+            <div class="line" />
             <a class="item" use:active href="/year">Год</a>
         </div>
     </div>
     <div class="content">
-        <Route path="/" redirect="/day"/>
+        <Route path="/" redirect="/day" />
         <Route path="/day"><DayCalendar /></Route>
         <Route path="/week"><WeekCalendar /></Route>
         <Route path="/month"><Calendar /></Route>
@@ -50,6 +53,8 @@
                 border: 1px solid #d8d9da;
                 height: 16px;
                 display: flex;
+                justify-content: space-around;
+                width: 214px;
                 .item {
                     padding: 2px 11px;
                     color: #a5a6a7;
@@ -62,9 +67,17 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    border-radius: 3px;
                 }
                 :global(.active) {
                     background: #d9d9d9;
+                    border-radius: 3px;
+                }
+                .line {
+                    width: 1px;
+                    height: 10px;
+                    background: #d8d9da;
+                    margin: 2px 0;
                 }
             }
         }

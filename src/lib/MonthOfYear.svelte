@@ -58,7 +58,10 @@
 		justify-content: flex-start;
 		align-items: baseline;
 		flex-direction: column;
-
+		position: sticky;
+		top: 32px;
+		background: #e5e6e7;
+		
 		header {
 			flex-shrink: 0;
 			color: #e84f42;
@@ -109,13 +112,13 @@
 				}
 				&.today &.selected {
 					border-radius: 16px;
-					background: #f00!important;
+					background: #f00 !important;
 					color: #fff !important;
 				}
 				&.notNow {
 					color: #bdbdbd;
 				}
-				
+
 				.month {
 					padding-left: 5px;
 					text-transform: lowercase;

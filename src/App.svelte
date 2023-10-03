@@ -1,11 +1,7 @@
 <script>
 	import { Route } from "tinro";
 	import { setDefaultOptions } from "date-fns";
-	import Calendar from "./lib/Calendar.svelte";
-	import WeekCalendar from "./lib/WeekCalendar.svelte";
-	import YearCalendar from "./lib/YearCalendar.svelte";
 	import { ru } from "date-fns/locale";
-	import DayCalendar from "./lib/DayCalendar.svelte";
 	import { setContext } from "svelte";
 	import { writable } from "svelte/store";
 	import Layout from "./lib/layout.svelte";

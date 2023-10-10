@@ -19,6 +19,7 @@
 
 	const end = addDays(start, 41);
 	const days = eachDayOfInterval({ start, end });
+	
 </script>
 
 <div class="container">

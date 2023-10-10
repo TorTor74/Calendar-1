@@ -6,7 +6,6 @@
 
 	export let day;
 	export let isWeek;
-
 	const today=getContext("today");
 	const start = startOfDay($today);
 	

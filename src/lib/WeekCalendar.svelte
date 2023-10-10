@@ -1,40 +1,57 @@
 <script>
-	import { format, startOfWeek, addDays, eachDayOfInterval, getMinutes, getHours } from "date-fns";
+	import {
+		format,
+		startOfWeek,
+		addDays,
+		eachDayOfInterval,
+		getMinutes,
+		getHours,
+		eachWeekOfInterval,
+	} from "date-fns";
 	import TimeLine from "./TimeLine.svelte";
 	import DayOfWeek from "./DayOfWeek.svelte";
 	import { getContext } from "svelte";
+	import VirtualScroll from "svelte-virtual-scroll-list";
+	import WeekDay from "./WeekDay.svelte";
 
-	const today = getContext("today");
-	const start = startOfWeek($today);
-
-	const end = addDays(start, 6);
-	const days = eachDayOfInterval({ start, end });
 	const isWeek = true;
+
+	const today= getContext("today");
+
+	const start = getContext("start");
+	const end = getContext("end");
+	// const start = startOfWeek($today);
+
+	let days = eachDayOfInterval({ start: $start, end: $end });
+	let items = days.map((obj, i) => ({ obj }));
 </script>
 
-<header>
-	<header>
-		<b>{format($today, "LLLL")}</b>
-		{format($today, "yyyy")}<b>г.</b>
-	</header>
-</header>
-<div class="flex-times">
-	<TimeLine />
-	<div class="days">
-		{#each days as day}
-			<DayOfWeek {day} {isWeek} />
-		{/each}
-	</div>
+<VirtualScroll data={items} key="obj" keeps={1} isHorizontal={true} let:data let:index>
+	<div class="container">
+		<header>
+			<header>
+				<b>{format(data.obj, "LLLL")}</b>
+				{format(data.obj, "yyyy")}<b>г.</b>
+			</header>
+		</header>
+		<div class="flex-times">
+			<TimeLine />
+			<WeekDay day={data.obj} />
 
-	<div class="timeline" style="--hour:{getHours($today)} ; --minutes:{getMinutes($today)}">
-		<div class="time">
-			{format($today, "HH:mm")}
+			<div class="timeline" style="--hour:{getHours($today)} ; --minutes:{getMinutes($today)}">
+				<div class="time">
+					{format($today, "HH:mm")}
+				</div>
+				<div class="line" />
+			</div>
 		</div>
-		<div class="line" />
 	</div>
-</div>
+</VirtualScroll>
 
 <style lang="scss">
+	.container{
+		width:calc(100vw - 70px);
+	}
 	header {
 		flex-shrink: 0;
 		color: #272727;
@@ -48,7 +65,7 @@
 		width: auto;
 		height: auto;
 		position: sticky;
-		top:32px;
+		top: 32px;
 		background: #fff;
 		z-index: 20;
 	}

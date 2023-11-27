@@ -14,7 +14,7 @@
 	let itemIndex=getYear($today)-getYear($start)
 </script>
 
-<VirtualScroll data={items} start={94} key="obj"  let:data let:index>
+<VirtualScroll data={items} start={94} key="obj"keeps={10}  let:data let:index>
 	<div class="container">
 		<header>{getYear(data.obj)}</header>
 
@@ -42,10 +42,11 @@
 			text-transform: lowercase;
 			text-align: start;
 			padding: 10px 14px;
-			width: auto;
+			width: 100%;
 			height: auto;
-			position: absolute;
-			top:32px
+			position: sticky;
+			background: #fff;
+			top:0;
 		}
 	}
 </style>

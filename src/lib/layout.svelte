@@ -78,7 +78,9 @@
             }
         }
         .content {
-            height: 100%;
+            // height: 100%;
+            height: calc(100vh - 32px);
+
         }
     }
 </style>
